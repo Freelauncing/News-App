@@ -1,6 +1,7 @@
 package com.newsapp.borislav
 
 import android.app.Application
+import com.newsapp.borislav.di.DatabaseModule
 import com.newsapp.borislav.di.RepositoryModule
 import com.newsapp.borislav.di.RetrofitModule
 import com.newsapp.borislav.di.ViewModelModule
@@ -20,12 +21,14 @@ class MainApplication :Application(){
         startKoin {
             androidContext(this@MainApplication)
             modules(listOf(
+                DatabaseModule,
                 ViewModelModule,
                 RepositoryModule,
-                RetrofitModule
+                RetrofitModule,
             ))
 
         }
+
         instance = this
     }
 }

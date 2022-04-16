@@ -48,14 +48,14 @@ android {
 
 dependencies {
 
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-
-//    def koin_version = "2.1.5"
     def retrofit_version = '2.6.1'
     def navigation_version = '2.2.2'
     def work_version = "2.7.1"
+    def roomVersion = '2.4.0-alpha04'
+    def archLifecycleVersion = '2.2.0'
+    def multidexVersion = '2.0.1'
 
-
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
@@ -105,4 +105,14 @@ dependencies {
     // Kotlin + coroutines
     implementation("androidx.work:work-runtime-ktx:$work_version")
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0"
+
+    //room
+    implementation "androidx.room:room-runtime:$roomVersion"
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'//
+    kapt "androidx.room:room-compiler:$roomVersion" //
+    implementation "androidx.room:room-ktx:$roomVersion" //
+    implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion" //
+    kapt "androidx.lifecycle:lifecycle-compiler:$archLifecycleVersion" //
+
+    implementation "androidx.multidex:multidex:$multidexVersion" //
 }

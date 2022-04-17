@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         appBarConfiguration =
             AppBarConfiguration.Builder(
-                R.id.listFragment,
+                R.id.fragment_news_list,
             )
                 .build()
 

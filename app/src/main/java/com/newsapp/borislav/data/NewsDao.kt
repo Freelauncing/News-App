@@ -8,7 +8,7 @@ import com.newsapp.borislav.data.model.News
 interface NewsDao {
 
     @Query("SELECT * FROM news")
-    fun observeNewss(): LiveData<List<News>>
+    fun observeNews(): LiveData<List<News>>
 
     @Query("SELECT * FROM news")
     suspend fun getNews(): List<News>

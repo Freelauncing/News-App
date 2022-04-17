@@ -1,5 +1,6 @@
 package com.newsapp.borislav.api
 
+import com.google.gson.JsonObject
 import org.json.JSONObject
 import retrofit2.Response
 import retrofit2.http.Body
@@ -14,5 +15,5 @@ interface ApiService {
                         @Query("page_size") page_size:Int,
                         @Query("lang") lang:String,
                         @Query("topic") topic:String,
-                        @Query("page") page:Int): Response<JSONObject>
+                        @Query("page") page:Int): Response<JsonObject>
 }

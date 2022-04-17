@@ -34,33 +34,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="8dp"
                 android:layout_marginBottom="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="240dp"
-                    android:layout_margin="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    android:elevation="5dp"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    app:cardCornerRadius="6dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <FrameLayout
+                <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="320dp">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -79,18 +60,15 @@
                         </RelativeLayout>
 
                     </FrameLayout>
-                </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_margin="16dp"
                     android:layout_weight="1"
                     android:clickable="true"
-                    android:elevation="5dp"
+                    android:elevation="12dp"
                     app:cardCornerRadius="6dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -105,44 +83,90 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center_vertical"
-                            android:layout_margin="8dp"
+                            android:layout_margin="12dp"
                             android:orientation="vertical"
                             >
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="top"
-                                android:layout_marginTop="4dp"
+                                android:padding="8dp"
                                 android:gravity="center"
                                 android:hint="Add Image"
                                 android:text="@{viewmodel.product.title}"
-                                android:textSize="18sp"
+                                android:textSize="24sp"
                                 android:textStyle="bold"
-                                android:textColor="#787676"
+                                android:textColor="@color/black"
                                 />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="top"
-                                android:layout_marginTop="4dp"
+                                android:layout_marginTop="12dp"
                                 android:gravity="left"
+                                android:padding="8dp"
                                 android:hint="Add Image"
-                                android:text="@{viewmodel.product.published_date}"
-                                android:textSize="16sp"
-                                android:textColor="#787676"
+                                app:author="@{viewmodel.product.author}"
+                                android:textSize="18sp"
+                                android:textColor="@color/black"
                                 />
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/addImage"
                                 android:layout_gravity="top"
-                                android:layout_marginTop="4dp"
+                                android:layout_marginTop="8dp"
                                 android:gravity="left"
+                                android:padding="8dp"
                                 android:hint="Add Image"
-                                android:text="@{viewmodel.product.summary}"
-                                android:textSize="14sp"
-                                android:textColor="#787676"
+                                app:date="@{viewmodel.product.published_date}"
+                                android:textSize="18sp"
+                                android:textColor="@color/black"
+                                app:layout_constraintTop_toBottomOf="@+id/addImage" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/addImage"
+                                android:layout_gravity="top"
+                                android:layout_marginTop="8dp"
+                                android:gravity="left"
+                                android:padding="8dp"
+                                android:hint="Add Image"
+                                app:publication="@{viewmodel.product.clean_url}"
+                                android:textSize="18sp"
+                                android:textColor="@color/black"
+                                app:layout_constraintTop_toBottomOf="@+id/addImage" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/addImage"
+                                android:layout_gravity="top"
+                                android:layout_marginTop="12dp"
+                                android:gravity="left"
+                                android:padding="8dp"
+                                android:hint="Add Image"
+                                android:textStyle="italic"
+                                app:excerpt="@{viewmodel.product.excerpt}"
+                                android:textSize="18sp"
+                                android:textColor="@color/black"
+                                app:layout_constraintTop_toBottomOf="@+id/addImage" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/addImage"
+                                android:layout_gravity="top"
+                                android:layout_marginTop="12dp"
+                                android:gravity="left"
+                                android:padding="8dp"
+                                android:textStyle="normal"
+                                android:hint="Add Image"
+                                app:summary="@{viewmodel.product.summary}"
+                                android:textSize="18sp"
+                                android:textColor="@color/black"
                                 app:layout_constraintTop_toBottomOf="@+id/addImage" />
 
                         </LinearLayout>

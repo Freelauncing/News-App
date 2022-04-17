@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.Fragment
@@ -16,6 +17,8 @@ import com.newsapp.borislav.R
 import com.newsapp.borislav.databinding.FragmentDetailsBinding
 import com.newsapp.borislav.utils.setupSnackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class DetailsFragment : Fragment() {
@@ -67,6 +70,58 @@ class DetailsFragment : Fragment() {
 @BindingAdapter("profileImage")
 fun loadImage(view: ImageView, imageUrl: String?) {
     Glide.with(view.context)
-        .load(imageUrl).apply(RequestOptions().circleCrop())
+        .load(imageUrl)
+        .apply(RequestOptions().fitCenter())
         .into(view)
+}
+
+@BindingAdapter("app:author")
+fun author(textView: TextView, value:String?) {
+    if(value.equals("null") || value==null  || value.isNullOrEmpty()){
+        textView.visibility = View.GONE
+    }else {
+        textView.visibility = View.VISIBLE
+        textView.text = "Author : " + value.toString() + ""
+    }
+}
+
+@BindingAdapter("app:date")
+fun date(textView: TextView, value:String?) {
+    if(value.equals("null") || value==null || value.isNullOrEmpty()){
+        textView.visibility = View.GONE
+    }else {
+        textView.visibility = View.VISIBLE
+        textView.text = "Date : " + value.toString().split(" ")[0] + ""
+    }
+}
+
+
+@BindingAdapter("app:summary")
+fun summary(textView: TextView, value:String?) {
+    if(value.equals("null") || value==null || value.isNullOrEmpty()){
+        textView.visibility = View.GONE
+    }else {
+        textView.visibility = View.VISIBLE
+        textView.text = "Summary : \n\n\t\t\t\t\t\t\t" + value.toString() + ""
+    }
+}
+
+@BindingAdapter("app:excerpt")
+fun excerpt(textView: TextView, value:String?) {
+    if(value.equals("null") || value==null || value.isNullOrEmpty()){
+        textView.visibility = View.GONE
+    }else {
+        textView.visibility = View.VISIBLE
+        textView.text = "Excerpt : \n\n\t\t\t\t\t\t\t" + value.toString() + ""
+    }
+}
+
+@BindingAdapter("app:publication")
+fun publication(textView: TextView, value:String?) {
+    if(value.equals("null") || value==null || value.isNullOrEmpty()){
+        textView.visibility = View.GONE
+    }else {
+        textView.visibility = View.VISIBLE
+        textView.text = "Publication : " + value.toString() + ""
+    }
 }

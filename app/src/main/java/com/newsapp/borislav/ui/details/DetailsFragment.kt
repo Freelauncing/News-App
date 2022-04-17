@@ -73,6 +73,7 @@ fun loadImage(view: ImageView, imageUrl: String?) {
     Glide.with(view.context)
         .load(imageUrl)
         .apply(RequestOptions().fitCenter())
+        .placeholder(R.drawable.ic_launcher_foreground)
         .into(view)
 }
 
@@ -102,7 +103,7 @@ fun dateAndPublication(textView: TextView, news: News?) {
         textView.visibility = View.GONE
     }else {
         textView.visibility = View.VISIBLE
-        textView.text = "Date : " + news?.published_date.toString().split(" ")[0] + "   Pub : " + news?.clean_url.toString()
+        textView.text = "Date : " + news?.published_date.toString().split(" ")[0] + "   \n\nPublication By : " + news?.clean_url.toString()
     }
 }
 

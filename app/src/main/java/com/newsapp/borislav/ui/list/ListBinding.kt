@@ -7,6 +7,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.newsapp.borislav.R
 import com.newsapp.borislav.data.model.News
 import java.text.SimpleDateFormat
 import java.util.*
@@ -23,12 +24,15 @@ fun setItems(listView: RecyclerView, items: List<News>?) {
 
 
 @BindingAdapter("itemImage")
-fun ImageView.setImage(item: String) {
-    val imgUri = item.toUri()
-    item?.let {
-        Glide.with(context)
-            .load(imgUri)
-            .into(this)
+fun ImageView.setImage(item: String?) {
+    if(!item.isNullOrEmpty()){
+        val imgUri = item.toUri()
+        item.let {
+            Glide.with(context)
+                .load(imgUri)
+                .placeholder(R.drawable.ic_launcher_foreground)
+                .into(this)
+        }
     }
 }
 

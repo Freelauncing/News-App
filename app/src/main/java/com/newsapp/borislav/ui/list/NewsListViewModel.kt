@@ -15,6 +15,12 @@ class NewsListViewModel (private val mainRepository: MainRepository,
                          private val networkHelper: NetworkHelper
 ) : ViewModel() {
 
+    private val _country = "US"
+    private val _pagesize = 100
+    private val _lang = "EN"
+    private val _topic = "news"
+    private val _page = 1
+
     private val _dataLoading = MutableLiveData<Boolean>()
     val dataLoading: LiveData<Boolean> = _dataLoading
 
@@ -39,7 +45,7 @@ class NewsListViewModel (private val mainRepository: MainRepository,
         if (forceUpdate) {
             _dataLoading.value = true
             viewModelScope.launch {
-                mainRepository.getNews("US",100,"EN","news",1)
+                mainRepository.getNews(_country,_pagesize,_lang,_topic,_page)
                 _dataLoading.value = false
             }
         }

@@ -19,6 +19,8 @@ import java.util.concurrent.TimeUnit
 private const val CONNECT_TIMEOUT = 1L
 private const val WRITE_TIMEOUT = 1L
 private const val READ_TIMEOUT = 1L
+private const val NEWS_CATCHER_API_KEY = "NF2-QiperYtNi93UmctE9pCLNH25Lo1Bt9FGaz_SFw4"
+
 val RetrofitModule = module {
     single { Cache(androidApplication().cacheDir, 10L * 1024 * 1024) }
     single { GsonBuilder().create() }
@@ -30,7 +32,7 @@ val RetrofitModule = module {
         Interceptor { chain ->
             chain.proceed(chain.request().newBuilder().apply {
                 header("Accept", "application/json")
-                header("x-api-key","NF2-QiperYtNi93UmctE9pCLNH25Lo1Bt9FGaz_SFw4")
+                header("x-api-key", NEWS_CATCHER_API_KEY)
             }.build())
         }
     }

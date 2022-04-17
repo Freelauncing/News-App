@@ -23,15 +23,10 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="4dp"
+            android:layout_margin="16dp"
             android:clickable="true"
             android:onClick="@{() -> viewmodel.openTask(news._id)}"
-            android:elevation="3dp"
+            android:elevation="6dp"
             app:cardCornerRadius="3dp"
             android:foreground="?android:attr/selectableItemBackground"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,71 +34,111 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
+                android:orientation="vertical"
                 android:layout_height="match_parent">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/product_image_card"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginRight="12dp"
-                    android:layout_marginBottom="12dp"
-                    android:clickable="true"
-                    android:elevation="3dp"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    app:cardCornerRadius="3dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                        <ImageView
-                            android:id="@+id/product_image"
-                            itemImage="@{news.media}"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:scaleType="centerCrop"
-                            android:adjustViewBounds="true"
-                            />
-
-                </androidx.cardview.widget.CardView>
+                <ImageView
+                    android:id="@+id/product_image"
+                    itemImage="@{news.media}"
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds="true"
+                    />
 
                 <LinearLayout
                     android:layout_toRightOf="@+id/product_image_card"
                     android:layout_width="match_parent"
-                    android:layout_height="75dp"
-                    android:layout_marginRight="12dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
                     android:orientation="vertical">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:text="@{news.title}"
-                        android:textColor="@color/primaryTextColor"
-                        android:hint="Title"
-                        app:autoSizeTextType="uniform"
-                        android:textAllCaps="true"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Title : "
+                            android:textColor="@color/primaryTextColor"
+                            android:hint="Title"
+                            android:padding="4dp"
+                            android:visibility="gone"
+                            android:textSize="16sp"
+                            app:autoSizeTextType="uniform"
+                            android:textAllCaps="true"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/textView4"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{news.title}"
+                            android:textColor="@color/primaryTextColor"
+                            android:hint="Title"
+                            android:textSize="16sp"
+                            android:padding="4dp"
+                            app:autoSizeTextType="uniform"
+                            android:textAllCaps="true"
+                            app:layout_constraintBottom_toTopOf="@+id/textView4"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Date : "
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:padding="4dp"
+                        android:visibility="gone"
+                        android:textColor="@android:color/black"
                         app:layout_constraintBottom_toTopOf="@+id/textView4"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:dateAndPublication="@{news}"
+                        android:textColor="@android:color/darker_gray"
+                        android:hint="Qty"
+                        android:textSize="14sp"
+                        android:padding="4dp"
+                        app:layout_constraintBottom_toTopOf="@+id/textView4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="4dp"
                         android:layout_height="wrap_content"
+                        android:padding="4dp"
                         android:orientation="horizontal">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Qty: "
+                            android:text=""
                             android:textColor="@android:color/darker_gray"
-                            android:hint="Qty"
+                            android:hint=""
+                            android:visibility="gone"
+                            android:textSize="14sp"
+                            android:padding="4dp"
                             app:layout_constraintBottom_toTopOf="@+id/textView4"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -111,34 +146,11 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{news.published_date}"
+                            android:text="@{news.excerpt}"
                             android:textColor="@android:color/darker_gray"
-                            android:hint="0 items"
-                            app:layout_constraintBottom_toTopOf="@+id/textView4"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rs: "
-                            android:textColor="@android:color/darker_gray"
-                            android:hint="Qty"
-                            app:layout_constraintBottom_toTopOf="@+id/textView4"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@android:color/darker_gray"
-                            android:hint="97 items"
-                            android:text="@{news.author}"
+                            android:hint=""
+                            android:padding="4dp"
+                            android:textSize="14sp"
                             app:layout_constraintBottom_toTopOf="@+id/textView4"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -146,7 +158,7 @@
                     </LinearLayout>
                 </LinearLayout>
 
-            </RelativeLayout>
+            </LinearLayout>
 
 
         </androidx.cardview.widget.CardView>

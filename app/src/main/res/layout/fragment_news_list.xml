@@ -59,12 +59,14 @@
                     android:orientation="vertical"
                     android:visibility="@{viewmodel.empty ? View.VISIBLE : View.GONE}">
 
-                    <ImageView
+                    <TextView
                         android:id="@+id/no_tasks_icon"
-                        android:layout_width="96dp"
+                        android:layout_width="match_parent"
                         android:layout_height="96dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_launcher_foreground"
+                        android:gravity="center"
+                        android:text="No News Available"
+                        android:textSize="24sp"
                         android:contentDescription="no_products_image_content_description" />
                 </LinearLayout>
             </RelativeLayout>

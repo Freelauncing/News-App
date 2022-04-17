@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.snackbar.Snackbar
 import com.newsapp.borislav.R
+import com.newsapp.borislav.data.model.News
 import com.newsapp.borislav.databinding.FragmentDetailsBinding
 import com.newsapp.borislav.utils.setupSnackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -92,6 +93,16 @@ fun date(textView: TextView, value:String?) {
     }else {
         textView.visibility = View.VISIBLE
         textView.text = "Date : " + value.toString().split(" ")[0] + ""
+    }
+}
+
+@BindingAdapter("app:dateAndPublication")
+fun dateAndPublication(textView: TextView, news: News?) {
+    if(news?.published_date.isNullOrEmpty()){
+        textView.visibility = View.GONE
+    }else {
+        textView.visibility = View.VISIBLE
+        textView.text = "Date : " + news?.published_date.toString().split(" ")[0] + "   Pub : " + news?.clean_url.toString()
     }
 }
 

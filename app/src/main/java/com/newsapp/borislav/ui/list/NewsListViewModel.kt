@@ -31,7 +31,7 @@ class NewsListViewModel (private val mainRepository: MainRepository,
     val openTaskEvent: LiveData<Event<String>> = _openTaskEvent
 
 
-    private fun showSnackbarMessage(message: String) { //
+    fun showSnackbarMessage(message: String) { //
         _snackbarText.value = Event(message)
     }
 
@@ -44,9 +44,14 @@ class NewsListViewModel (private val mainRepository: MainRepository,
     private val _items: LiveData<List<News>> = _forceUpdate.switchMap { forceUpdate ->
         if (forceUpdate) {
             _dataLoading.value = true
-            viewModelScope.launch {
-                mainRepository.getNews(_country,_pagesize,_lang,_topic,_page)
+            if(networkHelper.isNetworkConnected()) {
+                viewModelScope.launch {
+                    mainRepository.getNews(_country, _pagesize, _lang, _topic, _page)
+                    _dataLoading.value = false
+                }
+            }else{
                 _dataLoading.value = false
+                showSnackbarMessage("No Internet Connected")
             }
         }
         mainRepository.observeNews()

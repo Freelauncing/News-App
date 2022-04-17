@@ -105,8 +105,8 @@ class NewsListFragment : Fragment() {
         val id = item.getItemId()
 
         if (id == R.id.refresh) {
+            newsListViewModel.showSnackbarMessage("Fetching Latest News")
             newsListViewModel.refresh()
-            Toast.makeText(requireContext(), "Fetching Latest News", Toast.LENGTH_LONG).show()
             return true
         }
         return super.onOptionsItemSelected(item)

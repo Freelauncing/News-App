@@ -1,16 +1,15 @@
 package com.newsapp.borislav.ui.list
 
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.net.toUri
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.ceylonlabs.imageviewpopup.ImagePopup
+import com.newsapp.borislav.R
 import com.newsapp.borislav.data.model.News
 import com.newsapp.borislav.databinding.ItemListNewsBinding
-import com.newsapp.borislav.utils.Utility
 
 
 class NewsListAdapter(private val viewModelNews: NewsListViewModel) : ListAdapter<News, NewsListAdapter.ViewHolder>(TaskDiffCallback()) {
@@ -31,8 +30,14 @@ class NewsListAdapter(private val viewModelNews: NewsListViewModel) : ListAdapte
 
             binding.productImage.setOnClickListener {
                 val imagePopup = ImagePopup(binding.productImage.context)
-                imagePopup.initiatePopupWithGlide(item.media) // Load Image from Drawable
-                imagePopup.viewPopup();
+                if(!item.media.isNullOrEmpty()){
+                    try {
+                        imagePopup.initiatePopupWithGlide(item.media) // Load Image from Drawable
+                        imagePopup.viewPopup();
+                    }catch (e:Exception){
+
+                    }
+                }
             }
 
             binding.viewmodel = viewModelNews

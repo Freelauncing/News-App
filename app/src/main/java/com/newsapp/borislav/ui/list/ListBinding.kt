@@ -26,12 +26,16 @@ fun setItems(listView: RecyclerView, items: List<News>?) {
 @BindingAdapter("itemImage")
 fun ImageView.setImage(item: String?) {
     if(!item.isNullOrEmpty()){
-        val imgUri = item.toUri()
-        item.let {
-            Glide.with(context)
-                .load(imgUri)
-                .placeholder(R.drawable.ic_launcher_foreground)
-                .into(this)
+        try {
+            val imgUri = item.toUri()
+            item.let {
+                Glide.with(context)
+                    .load(imgUri)
+                    .placeholder(R.drawable.ic_launcher_foreground)
+                    .into(this)
+            }
+        }catch (e:Exception){
+
         }
     }
 }

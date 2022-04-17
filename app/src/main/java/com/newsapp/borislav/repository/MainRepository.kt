@@ -77,4 +77,8 @@ class MainRepository(private val service: ApiService,
         return newsDao.observeNews()
     }
 
+    fun observeNewsById(id:String):LiveData<News>{
+        return newsDao.observeNewsById(id)
+    }
+
 }

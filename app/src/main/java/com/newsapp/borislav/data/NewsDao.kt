@@ -14,10 +14,10 @@ interface NewsDao {
     suspend fun getNews(): List<News>
 
     @Query("SELECT * FROM news WHERE _id = :NewsId")
-    fun observeNewsById(NewsId: Long): LiveData<News>
+    fun observeNewsById(NewsId: String): LiveData<News>
 
     @Query("SELECT * FROM news WHERE _id = :NewsId")
-    suspend fun getNewsById(NewsId: Long): News?
+    suspend fun getNewsById(NewsId: String): News?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNews(news: News)
@@ -26,7 +26,7 @@ interface NewsDao {
     suspend fun updateNews(product: News): Int
 
     @Query("DELETE FROM news WHERE _id = :newId")
-    suspend fun deleteNewsById(newId: Long): Int
+    suspend fun deleteNewsById(newId: String): Int
 
     @Query("DELETE FROM news")
     suspend fun deleteNews()

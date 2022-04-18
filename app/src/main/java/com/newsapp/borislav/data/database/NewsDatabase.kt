@@ -1,5 +1,6 @@
 package com.newsapp.borislav.data.database
 
+import android.app.Application
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
@@ -17,11 +18,11 @@ abstract class NewsDatabase : RoomDatabase() {
 private lateinit var INSTANCE: NewsDatabase
 
 
-fun getDatabase(context: Context): NewsDatabase {
+fun getDatabase(application: Application): NewsDatabase {
     synchronized(NewsDatabase::class.java){
         if (!::INSTANCE.isInitialized) {
             INSTANCE = Room.databaseBuilder(
-                context.applicationContext,
+                application,
                 NewsDatabase::class.java,
                 "news_db")
                 .fallbackToDestructiveMigration()

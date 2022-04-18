@@ -33,6 +33,7 @@ class MainRepository(private val service: ApiService,
                 )
 
                 if (result.isSuccessful) {
+                    newsDao.deleteNews()
                     val articles = result.body()!!.getAsJsonArray("articles")
                     for (i in 0 until articles.size()) {
                         val article = articles.get(i).asJsonObject

@@ -15,7 +15,7 @@ class NewsListViewModel (private val mainRepository: MainRepository,
                          private val networkHelper: NetworkHelper
 ) : ViewModel() {
 
-    private val _country = "US"
+    private val _country = "PK"
     private val _pagesize = 100
     private val _lang = "EN"
     private val _topic = "news"
